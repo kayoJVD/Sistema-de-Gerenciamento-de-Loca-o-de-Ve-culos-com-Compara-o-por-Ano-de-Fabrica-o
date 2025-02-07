@@ -1,111 +1,87 @@
-Sistema de Locação de Veículos
+# Sistema de Locação de Veículos
 
-Descrição
+Este projeto é um sistema de locação de veículos que permite gerenciar diferentes tipos de veículos, como carros, motos e caminhões. O sistema permite adicionar veículos, listar veículos, ordenar veículos por ano de fabricação e encontrar o veículo mais antigo.
 
-O Sistema de Locação de Veículos é um projeto Java que permite gerenciar um catálogo de veículos disponíveis para locação. O sistema organiza diferentes tipos de veículos, como Carros, Motos e Caminhões, e oferece funcionalidades como adição de veículos, listagem, ordenação por ano de fabricação e busca do veículo mais antigo.
+## Estrutura do Projeto
 
-Tecnologias Utilizadas
+O projeto está organizado nas seguintes pastas e arquivos:
 
-Linguagem: Java
+- `Model`: Contém as classes de modelo que representam os veículos.
+  - `Veiculos.java`: Classe base para todos os veículos.
+  - `Carro.java`: Classe que representa um carro.
+  - `Moto.java`: Classe que representa uma moto.
+  - `Caminhao.java`: Classe que representa um caminhão.
+- `Controller`: Contém a classe controladora que gerencia a locação de veículos.
+  - `Locadora.java`: Classe genérica que gerencia a lista de veículos.
+- `View`: Contém a classe principal que executa o programa.
+  - `Main.java`: Classe principal que demonstra o uso do sistema.
 
-Paradigma: Programação Orientada a Objetos (POO)
+## Classes e Métodos
 
-Coleções: List (ArrayList)
+### Veiculos
 
-Ordenação: Comparator
+A classe `Veiculos` é a classe base para todos os veículos e contém os seguintes atributos e métodos:
 
-Estrutura do Projeto
+- Atributos:
+  - `id`: Identificador do veículo.
+  - `model`: Modelo do veículo.
+  - `mark`: Marca do veículo.
+  - `yerManufacture`: Ano de fabricação do veículo.
+  - `vehicleCategory`: Categoria do veículo.
+  - `rentalPriceDay`: Preço de locação por dia.
 
-O projeto está organizado em diferentes pacotes:
+- Métodos:
+  - Construtor para inicializar os atributos.
+  - Métodos `get` e `set` para cada atributo.
+  - Método `toString` para representar o veículo como uma string.
+  - Métodos `equals` e `hashCode` para comparar veículos.
 
-1. Model (Modelo de Dados)
+### Carro
 
-Contém as classes que representam os veículos e suas propriedades:
+A classe `Carro` estende a classe `Veiculos` e adiciona o atributo `numberOfDoors` (número de portas).
 
-Veiculos: Classe base para todos os veículos.
+### Moto
 
-Carro: Extende Veiculos, adicionando o número de portas.
+A classe `Moto` estende a classe `Veiculos` e adiciona o atributo `typeMotorcycle` (tipo de motocicleta).
 
-Moto: Extende Veiculos, adicionando o tipo da moto.
+### Caminhao
 
-Caminhao: Extende Veiculos, adicionando a capacidade de carga.
+A classe `Caminhao` estende a classe `Veiculos` e adiciona o atributo `loadCapacity` (capacidade de carga).
 
-2. Controller (Lógica de Negócio)
+### Locadora
 
-Locadora<T>: Classe genérica que gerencia os veículos.
+A classe `Locadora` é uma classe genérica que gerencia uma lista de veículos. Ela contém os seguintes métodos:
 
-Adiciona veículos ao catálogo.
+- `addVehicles(T vehicle)`: Adiciona um veículo à lista.
+- `listVehicles()`: Lista todos os veículos.
+- `orderForYear()`: Ordena os veículos por ano de fabricação.
+- `searchOlder()`: Encontra o veículo mais antigo.
 
-Lista veículos cadastrados.
+### Main
 
-Ordena veículos por ano de fabricação.
+A classe `Main` demonstra o uso do sistema de locação de veículos. Ela cria instâncias de `Locadora` para carros, motos e caminhões, adiciona veículos a essas locadoras, ordena os veículos por ano de fabricação e lista os veículos.
 
-Busca o veículo mais antigo.
+## Como Executar
 
-ComparatorYearManufacture: Implementação de Comparator para ordenar veículos pelo ano de fabricação.
+Para executar o projeto, compile e execute a classe `Main`:
 
-3. View (Interface de Usuário)
+```bash
+javac ChatGpt/SistemaDeLocaçãoDeVeiculos/View/Main.java
+java ChatGpt/SistemaDeLocaçãoDeVeiculos/View/Main
+```
 
-Main: Classe principal que instancia e executa a aplicação, demonstrando suas funcionalidades.
+## Contribuição
 
-Funcionalidades
+Sinta-se à vontade para contribuir com melhorias para este projeto. Para contribuir, siga os passos abaixo:
 
-Adicionar diferentes tipos de veículos ao catálogo.
+1. Faça um fork do repositório.
+2. Crie uma nova branch: `git checkout -b minha-nova-feature`.
+3. Faça suas alterações e commit: `git commit -m 'Adiciona nova feature'`.
+4. Envie para o repositório original: `git push origin minha-nova-feature`.
+5. Crie um pull request.
 
-Listar todos os veículos disponíveis.
+## Licença
 
-Ordenar os veículos por ano de fabricação.
+Este projeto está licenciado sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
 
-Identificar o veículo mais antigo cadastrado.
-
-Como Executar o Projeto
-
-Pré-requisitos:
-
-Java 8 ou superior instalado
-
-IDE (IntelliJ, Eclipse, NetBeans) ou linha de comando
-
-Passos para execução:
-
-Clone este repositório.
-
-git clone https://github.com/seu-repositorio.git
-
-Compile o projeto.
-
-javac -d bin src/ChatGpt/SistemaDeLocaçãoDeVeiculos/**/*.java
-
-Execute o programa.
-
-java -cp bin ChatGpt.SistemaDeLocaçãoDeVeiculos.View.Main
-
-Exemplo de Saída
-
-Carros ordenados por ano:
-Lista de Carros
-Veiculos{id='1', model='Uno com escadas', mark='Fiat', yerManufacture=1998, vehicleCategory='Carro', rentalPriceDay=100.0}
---------------
-Veiculos{id='2', model='Ferrari', mark='ferrari', yerManufacture=2024, vehicleCategory='Carro', rentalPriceDay=5000.0}
---------------
-
-Veículos mais antigos:
-Veiculos{id='2', model='Fan 125', mark='Honda', yerManufacture=2010, vehicleCategory='Moto', rentalPriceDay=50.0}
-Veiculos{id='1', model='Uno com escadas', mark='Fiat', yerManufacture=1998, vehicleCategory='Carro', rentalPriceDay=100.0}
-Veiculos{id='2', model='Volkswagen Delivery 11.180', mark='Volksvagem', yerManufacture=2022, vehicleCategory='Caminhão', rentalPriceDay=900.0}
-
-Melhorias Futuras
-
-Implementação de um sistema de banco de dados para persistência de dados.
-
-Interface gráfica para facilitar a interação com o usuário.
-
-Funcionalidade de aluguel e devolução de veículos.
-
-Autor
-
-Kayo Alves
-
-Licença
-
-Este projeto está licenciado sob a MIT License - veja o arquivo LICENSE para mais detalhes.
+---
